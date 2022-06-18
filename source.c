@@ -71,7 +71,7 @@ char* prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
 
 void main()
 {
-    unsigned int Pole[4]={0,3,2,0};
+    unsigned int Pole[4]={0,4,3,0};
     unsigned int newPole[4]={0,0,0,0};
 
     unsigned int *a=Pole;
