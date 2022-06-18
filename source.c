@@ -4,7 +4,11 @@
 #include <math.h>
 #include <stdbool.h>
 
-char* prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
+#define PM_SIZE 1
+#define PM_OK 0
+#define PM_STAB 2
+
+char prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
 {
     int i;
 
@@ -16,7 +20,7 @@ char* prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
             {
                 if((a[i]-1)/2!=0)
                 {
-                    return "PM_SIZE";
+                    return PM_SIZE;
                     break;
                 }
                 else
@@ -37,7 +41,7 @@ char* prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
             {
                 if((a[i])/2!=0)
                 {
-                    return "PM_SIZE";
+                    return PM_SIZE;
                     break;
                 }
             }
@@ -61,21 +65,21 @@ char* prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
 
     if (same)
     {
-        return "PM_STAB";
+        return PM_STAB;
     }
     else
     {
-        return "PM_OK";
+        return PM_OK;
     }
 }
 
 void main()
 {
-    unsigned int Pole[4]={0,4,3,0};
+    unsigned int Pole[4]={0,0,0,0};
     unsigned int newPole[4]={0,0,0,0};
 
     unsigned int *a=Pole;
     unsigned int *b=newPole;
 
-    printf("%s\n",prehrnutie_minci(a,b,4));
+    printf("%d\n",prehrnutie_minci(a,b,4));
 }
