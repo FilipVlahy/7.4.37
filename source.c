@@ -73,13 +73,25 @@ char prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
     }
 }
 
+void print_array(unsigned int *a, unsigned int len)
+{
+    unsigned int i;
+
+    for(i=0; i<len; i++)
+        printf(" %d ",a[i]);
+    printf("\n");
+}
+
 void main()
 {
-    unsigned int Pole[4]={0,0,0,0};
+    unsigned int Pole[4]={0,2,0,0};
     unsigned int newPole[4]={0,0,0,0};
 
     unsigned int *a=Pole;
     unsigned int *b=newPole;
 
     printf("%d\n",prehrnutie_minci(a,b,4));
+
+    print_array(a,4);
+    print_array(b,4);
 }
