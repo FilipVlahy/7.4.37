@@ -12,44 +12,33 @@ char prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
 {
     int i;
 
+    //nulovanie pola b aby bolo prazdne
     for(i=0;i<len;i++)
+    {
+        b[i]=0;
+    }
+
+    if (a[0] > 1 || a[len] > 1)
+    {
+        return PM_SIZE;
+    }
+    else
+    {
+        b[0]=a[0];
+        b[len]=a[len];
+    }
+
+    for(i=1;i<len-1;i++)
     {
         if (a[i]%2!=0)
         {
-            if (i-1 < 0 || i+1 > len-1)
-            {
-                if((a[i]-1)/2!=0)
-                {
-                    return PM_SIZE;
-                    break;
-                }
-                else
-                {
-                    b[i]=b[i]+1;
-                }
-            }
-            else
-            {
-                b[i-1]=b[i]+(a[i]-1)/2;
-                b[i+1]=b[i]+(a[i]-1)/2;
-                b[i]=b[i]+1;                
-            }
+            b[i-1]+=(a[i]-1)/2;
+            b[i+1]+=(a[i]-1)/2;
         }
         else
         {
-            if (i-1 < 0 || i+1 > len-1)
-            {
-                if((a[i])/2!=0)
-                {
-                    return PM_SIZE;
-                    break;
-                }
-            }
-            else
-            {
-                b[i]=b[i]+a[i]/2;
-                b[i]=b[i]+a[i]/2;               
-            }
+            b[i-1]+=a[i]/2;
+            b[i+1]+=a[i]/2;
         }
     }
 
@@ -84,7 +73,7 @@ void print_array(unsigned int *a, unsigned int len)
 
 void main()
 {
-    unsigned int Pole[4]={0,2,0,0};
+    unsigned int Pole[4]={1,2,0,0};
     unsigned int newPole[4]={0,0,0,0};
 
     unsigned int *a=Pole;
