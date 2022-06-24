@@ -11,6 +11,7 @@
 char prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
 {
     int i;
+    unsigned int end = len - 1;
 
     //nulovanie pola b aby bolo prazdne
     for(i=0;i<len;i++)
@@ -18,14 +19,14 @@ char prehrnutie_minci(unsigned int *a,unsigned int *b,unsigned int len)
         b[i]=0;
     }
 
-    if (a[0] > 1 || a[len] > 1)
+    if (a[0] > 1 || a[end] > 1)
     {
         return PM_SIZE;
     }
     else
     {
         b[0]=a[0];
-        b[len]=a[len];
+        b[end]=a[end];
     }
 
     for(i=1;i<len-1;i++)
